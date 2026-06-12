@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우산도(于山島) — 푸른 바다 위의 기록</title>
+    <!-- Google Fonts: 고급스러운 고딕 및 명조 서체 연결 -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Noto+Serif+KR:wght@300;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. 디자인 시스템 & 초기화 */
+        :root {
+            --bg-color: #0b0f19; /* 깊은 동해 바다 느낌의 다크 네이비 */
+            --text-color: #ffffff;
+            --accent-color: #38bdf8; /* 맑은 하늘/바다의 청량한 포인트 컬러 */
+            --font-sans: 'Noto Sans KR', sans-serif;
+            --font-serif: 'Noto Serif KR', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* 2. 네비게이션 헤더 (미니멀 트렌드) */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(11, 15, 25, 0.7), transparent);
+            backdrop-filter: blur(10px); /* 블러 처리로 트렌디한 무드 연출 */
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--text-color);
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+        .nav-link:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        /* 3. 히어로 섹션 (풀스크린 메인 이미지) */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 4% 8vh 4%;
+            overflow: hidden;
+        }
+
+        /* 배경 이미지 레이어 */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 💡 여기에 준비하신 우산도(독도) 사진 파일명을 적어주세요 */
+            background-image: url('usando.jpg'); 
+            background-size: cover;
+            background-position: center 30%;
+            z-index: 1;
+            transform: scale(1.05);
+            animation: subtleZoom 20s infinite alternate ease-in-out;
+        }
+
+        /* 이미지 가독성을 위한 오버레이 그라데이션 */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(11, 15, 25, 0.2) 0%,
+                rgba(11, 15, 25, 0.4) 50%,
+                rgba(11, 15, 25, 0.95) 100%
+            );
+            z-index: 2;
+        }
+
+        /* 메인 텍스트 콘텐츠 */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .hero-tag {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            display: block;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4.5rem); /* 브라우저 크기에 맞춰 폰트 조절 */
+            line-height: 1.2;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        .hero-desc {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 300;
+            opacity: 0.8;
+            max-width: 600px;
+            animation: fadeInUp 1.4s ease forwards;
+        }
+
+        /* 4. 적응형/반응형 애니메이션 및 효과 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtleZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.08); }
+        }
+
+        /* 모바일 최적화 대응 (Media Query) */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 6%;
+            }
+            .hero {
+                padding: 0 6% 12vh 6%;
+                background-position: center center;
+            }
+            .hero-desc {
+                br { display: none; } /* 모바일에서 어색한 줄바꿈 제거 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 헤더 영역 -->
+    <header>
+        <div class="logo">USANDO</div>
+        <div class="nav-link" onclick="location.reload();">Refresh</div>
+    </header>
+
+    <!-- 메인 히어로 섹션 -->
+    <main class="hero">
+        <!-- 배경 사진 및 암전 효과 -->
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+
+        <!-- 텍스트 내용 -->
+        <div class="hero-content">
+            <span class="hero-tag">Our Beautiful Island</span>
+            <h1 class="hero-title">바다 위에 수놓은<br>우산도의 숨결</h1>
+            <p class="hero-desc">
+                가장 먼저 태양이 뜨는 곳, 오랜 시간 동해의 푸른 물결을 지켜온 <br>
+                우산도(于山島)의 당당하고 아름다운 실루엣을 한 눈에 담아보세요.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>
